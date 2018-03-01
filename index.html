@@ -20,7 +20,6 @@
     crossorigin=""></script> -->
   <script type="text/javascript" src="L.TileLayer.Zoomify.js"></script>
 
-    </script>
 
   <script>
   $( initmap );
@@ -28,36 +27,6 @@
   var map;
 
   function initmap() {
-    // See also: http://kempe.net/blog/2014/06/14/leaflet-pan-zoom-image.html
-
-    // var minZoom = 2;
-    // var maxZoom = 8;
-    //
-    // map = L.map('map', {
-    //   minZoom: minZoom,
-    //   maxZoom: maxZoom,
-    //   center: [0, 0],
-    //   zoom: minZoom,
-    //   crs: L.CRS.Simple
-    // });
-    //
-    // // dimensions of the image
-    // var w = 3300, //orginal: 3300
-    //     h = 2450, // orginal: 2450
-    //     url = 'kort.png';
-    //
-    // // calculate the edges of the image, in coordinate space
-    // var southWest = map.unproject([0, h], map.getMaxZoom()-(maxZoom/2));
-    // var northEast = map.unproject([w, 0], map.getMaxZoom()-(maxZoom/2));
-    // var bounds = new L.LatLngBounds(southWest, northEast);
-    //
-    // // add the image overlay,
-    // // so that it covers the entire map
-    // L.imageOverlay(url, bounds).addTo(map);
-    //
-    // // tell leaflet that the map is exactly as big as the image
-    // map.setMaxBounds(bounds);
-
     map = L.map('map', {
       minZoom: 1,
       maxZoom: 7,
@@ -84,14 +53,23 @@
 
 
      map.on('click', function(e) {
-       var lat = e.latlng.lat
-       console.log("Lat, Lon : " + lat + ", " + e.latlng.lng)
+       var lng = e.latlng.lng;
+       var lat = e.latlng.lat;
 
-// [0,0] - [165,231]
-// brede 0-231
-// højde 0-165
+       // 40 meter = 173,9 - 176,6 = 2,7 -- 10m = 0,675
+       var OneMeter = 0.0675
+
+       var x = lng / OneMeter;
+       var y = (lat / OneMeter) * -1;
+
+       console("lng:"+ lng + " : " + Math.round(x) + " : square nr:"+ Math.floor( x/10 ) + "<br /> lat:"+ lat + " : " + Math.round(y) + " : square nr:"+ Math.floor( y/10 ) );
+
 
      });
+
+     function console(str){
+       $("#console").html(str);
+     }
   }
 
 
@@ -107,12 +85,21 @@
       border: 1px solid #ccc;
       margin-bottom: 10px;
     }
+    #console{
+      padding: 10px;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    text-align: center;
+    }
   </style>
 </head>
 
 <bod>
   <h4>RUNE TRIES LEAFLET</h4>
 <div id="map"></div>
+<div id="console"></div>
 
 </body>
 </html>
