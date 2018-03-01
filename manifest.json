@@ -1,0 +1,16 @@
+{
+    "dir": "ltr",
+    "lang": "en",
+    "name": "Rune",
+    "scope": "/Rune/",
+    "display": "browser",
+    "start_url": "https://bejtrup.github.io/Rune/",
+    "short_name": "Rune",
+    "theme_color": "transparent",
+    "description": "Rune er fuld, men han kan altid fortælle dine venner, hvor du er på Roskilde.",
+    "orientation": "any",
+    "background_color": "transparent",
+    "related_applications": [],
+    "prefer_related_applications": false,
+    "icons": []
+}
