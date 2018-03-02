@@ -7,7 +7,7 @@
   <title>Rune</title>
   <link rel="manifest" href="./manifest.json">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-
+  <link rel="stylesheet" href="css/index.css" />
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.1/dist/leaflet.css"
     integrity="sha512-Rksm5RenBEKSKFjgI3a41vrjkw4EVPlJ3+OiI65vTjIdo9brlAacEuKOiQ5OFh7cOI1bkDwLqdLw3Zg0cRJAAQ=="
     crossorigin=""/>
@@ -18,145 +18,46 @@
   <script src="https://unpkg.com/leaflet@1.3.1/dist/leaflet.js"
     integrity="sha512-/Nsx9X4HebavoBvEBuyp3I7od5tA0UzAxs+j83KgC8PU0kgB4XiK4Lfe4y4cgBtaRJQEIFCW+oC506aPT2L1zw=="
     crossorigin=""></script>
-  <script type="text/javascript" src="L.TileLayer.Zoomify.js"></script>
+  <!-- <script type="text/javascript" src="L.TileLayer.Zoomify.js"></script> -->
+  <script src="js/words.js"></script>
+  <script src="js/map.js"></script>
+  <script src="js/function.js"></script>
 
-
-  <script>
-  $( initmap );
-
-  var map;
-
-  function initmap() {
-
-    // map = L.map('map',{
-    //         minZoom: 0,
-    //         maxZoom: 5,
-    //         center: [0, 0],
-    //         zoom: 5,
-    //         crs: L.CRS.Simple
-    // }).setView([0, 0]);
-    //
-    // L.tileLayer.wms('kort/kort18_2/TileGroup0/{z}{x}{y}.jpg', {
-    //   attribution: 'Map data &copy; ???',
-    // }).addTo(map);
-
-var maxZoom = 8;
-var minZoom = 1;
-
-    map = L.map('map', {
-      tap: true,
-      minZoom: minZoom,
-      maxZoom: maxZoom,
-      center: [0, 0],
-      zoom: 2,
-      crs: L.CRS.Simple
-    });
-
-    // dimensions of the image
-    var w = 4000,
-        h = 2834, //2831
-        url = 'kort18_2.png';
-    // calculate the edges of the image, in coordinate space
-
-    var southWest = map.unproject([0, h], map.getMaxZoom()-(maxZoom/2));
-    var northEast = map.unproject([w, 0], map.getMaxZoom()-(maxZoom/2));
-
-    var bounds = new L.LatLngBounds(southWest, northEast);
-    // add the image overlay,
-    // so that it covers the entire map
-    L.imageOverlay(url, bounds).addTo(map);
-    // tell leaflet that the map is exactly as big as the image
-    //map.setMaxBounds(bounds);
-    map.panTo([-75.268,98]);
-
-    var square = L.marker([-75.268,98]).addTo(map);
-
- // ZOOMIFY
-
-    //  var w = 30000, //orginal: 3300
-    //      h = 21212, // orginal: 2450
-    //      url = 'kort/kort18/';
-    //  // calculate the edges of the image, in coordinate space
-    //  var offest = 5000;
-    //  var southWest = map.unproject([(-1*offest), (h+offest)], map.getMaxZoom());
-    //  var northEast = map.unproject([(w+offest), (-1*offest)], map.getMaxZoom());
-    //  var bounds = new L.LatLngBounds(southWest, northEast);
-    //
-    // L.tileLayer.zoomify(url, {
-    //     width: w,
-    //     height: h,
-    //     tolerance: 1,
-    // }).addTo(map);
-    //
-    // map.setMaxBounds(bounds);
-
-    // 40 meter = 173,9 - 176,6 = 2,7 -- 10m = 0,675 // zommify
-
-
-//// OTHER
-
-   // kort bredde = 250 // firkanter X = 347
-   // kort højde = 182 // firkanter Y = 246
-
-    var OneMeter = (250/347)/10;
-
-     map.on('click', function(e) {
-       var lng = e.latlng.lng;
-       var lat = e.latlng.lat;
-
-
-
-       var x = lng / OneMeter;
-       var y = (lat / OneMeter) * -1;
-
-       var squareX = Math.floor( x/10 );
-       var squareY = Math.floor( y/10 );
-
-       consoles("lng:"+ lng + " : " + Math.round(x) + " : square nr:"+ squareX + "<br /> lat:"+ lat + " : " + Math.round(y) + " : square nr:"+ squareY );
-
-
-       var ln = ((squareX * 10)+5)*OneMeter;
-       var la = (((squareY * 10)+5)*OneMeter)*-1;
-       console.log(la,ln);
-       var newLatLng = new L.LatLng(la, ln);
-       square.setLatLng(newLatLng);
-
-     });
-
-     function consoles(str){
-       $("#console").html(str);
-     }
-  }
-
-
-  </script>
-  <style >
-  html,body{
-    padding: 0;
-    margin: 0;
-  }
-    #map {
-      width: 100vw;
-      height: 90vh;
-      border: 1px solid #ccc;
-      margin-bottom: 10px;
-    }
+  <style>
     #console{
       padding: 10px;
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    text-align: center;
-    z-index: 1000000;
-
+      position: fixed;
+      top: 10vh;
+      left: 0;
+      right: 0;
+      text-align: center;
+      z-index: 1000000;
     }
   </style>
 </head>
-
-<bod>
-  <h4>RUNE TRIES LEAFLET 3</h4>
+<body>
+<div id="crosshair">
+  <img src="img/rune_arm.png" alt="">
+</div>
 <div id="map"></div>
+<div id="menuBottom">
+  <div id="fire" class="clickEffect" onclick="fire();">
+        <img src="img/rune_get.png" width="40" height="40">
+  </div>
+  <div class="inputWrapper">
+        <div id="suggestions"></div>
+        <div class="inputwrapper">
+            <div class="inputColor">
+              <input id="wordOne" value="">
+              <input id="wordTwo" value="">
+            </div>
+        </div>
+        <div id="share"><img src="img/rune_share.png" width="42" height="42"></div>
+  </div>
+  <div id="find" class="clickEffect">
+        <img src="img/rune_post.png" width="40" height="40">
+   </div>
+</div>
 <div id="console"></div>
 
 </body>
