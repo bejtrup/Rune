@@ -54,7 +54,7 @@ var minZoom = 1;
 
     // dimensions of the image
     var w = 4000,
-        h = 2831,
+        h = 2834, //2831
         url = 'kort18_2.png';
     // calculate the edges of the image, in coordinate space
 
@@ -66,9 +66,10 @@ var minZoom = 1;
     // so that it covers the entire map
     L.imageOverlay(url, bounds).addTo(map);
     // tell leaflet that the map is exactly as big as the image
-    map.setMaxBounds(bounds);
+    //map.setMaxBounds(bounds);
     map.panTo([-75.268,98]);
 
+    var square = L.marker([-75.268,98]).addTo(map);
 
  // ZOOMIFY
 
@@ -89,25 +90,40 @@ var minZoom = 1;
     //
     // map.setMaxBounds(bounds);
 
+    // 40 meter = 173,9 - 176,6 = 2,7 -- 10m = 0,675 // zommify
+
+
+//// OTHER
+
+   // kort bredde = 250 // firkanter X = 347
+   // kort højde = 182 // firkanter Y = 246
+
+    var OneMeter = (250/347)/10;
 
      map.on('click', function(e) {
        var lng = e.latlng.lng;
        var lat = e.latlng.lat;
 
-       // 40 meter = 173,9 - 176,6 = 2,7 -- 10m = 0,675 // zommify
 
-       //40 meter = 3,125 = 10m 0,78125
-       var OneMeter = 0.078125
 
        var x = lng / OneMeter;
        var y = (lat / OneMeter) * -1;
 
-       console("lng:"+ lng + " : " + Math.round(x) + " : square nr:"+ Math.floor( x/10 ) + "<br /> lat:"+ lat + " : " + Math.round(y) + " : square nr:"+ Math.floor( y/10 ) );
+       var squareX = Math.floor( x/10 );
+       var squareY = Math.floor( y/10 );
 
+       consoles("lng:"+ lng + " : " + Math.round(x) + " : square nr:"+ squareX + "<br /> lat:"+ lat + " : " + Math.round(y) + " : square nr:"+ squareY );
+
+
+       var ln = ((squareX * 10)+5)*OneMeter;
+       var la = (((squareY * 10)+5)*OneMeter)*-1;
+       console.log(la,ln);
+       var newLatLng = new L.LatLng(la, ln);
+       square.setLatLng(newLatLng);
 
      });
 
-     function console(str){
+     function consoles(str){
        $("#console").html(str);
      }
   }
@@ -139,7 +155,7 @@ var minZoom = 1;
 </head>
 
 <bod>
-  <h4>RUNE TRIES LEAFLET 2</h4>
+  <h4>RUNE TRIES LEAFLET 3</h4>
 <div id="map"></div>
 <div id="console"></div>
 
