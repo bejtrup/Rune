@@ -45,13 +45,16 @@ var minZoom = 1;
 
     map = L.map('map', {
       tap: true,
+      zoomControl: false,
       minZoom: minZoom,
       maxZoom: maxZoom,
       center: [0, 0],
       zoom: 2,
       crs: L.CRS.Simple
     });
-
+    L.control.zoom({
+      position:'bottomright'
+    }).addTo(map);
     // dimensions of the image
     var w = 4000,
         h = 2834, //2831
@@ -66,7 +69,12 @@ var minZoom = 1;
     // so that it covers the entire map
     L.imageOverlay(url, bounds).addTo(map);
     // tell leaflet that the map is exactly as big as the image
-    //map.setMaxBounds(bounds);
+
+    var offset = 500;
+    var sw = map.unproject([-offset, h+offset], map.getMaxZoom()-(maxZoom/2));
+    var ne = map.unproject([w+offset, -offset], map.getMaxZoom()-(maxZoom/2));
+    var b = new L.LatLngBounds(sw, ne);
+    map.setMaxBounds(b);
     map.panTo([-75.268,98]);
 
     var square = L.marker([-75.268,98]).addTo(map);
@@ -117,7 +125,6 @@ var minZoom = 1;
 
        var ln = ((squareX * 10)+5)*OneMeter;
        var la = (((squareY * 10)+5)*OneMeter)*-1;
-       console.log(la,ln);
        var newLatLng = new L.LatLng(la, ln);
        square.setLatLng(newLatLng);
 
@@ -138,18 +145,16 @@ var minZoom = 1;
     #map {
       width: 100vw;
       height: 90vh;
-      border: 1px solid #ccc;
-      margin-bottom: 10px;
+      background: #d0ced1;
     }
     #console{
       padding: 10px;
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    text-align: center;
-    z-index: 1000000;
-
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      text-align: center;
+      z-index: 1000000;
     }
   </style>
 </head>
