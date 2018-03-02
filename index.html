@@ -39,19 +39,21 @@ var minZoom = 2;
     });
 
     // dimensions of the image
-    var w = 3300,
-        h = 2450,
-        url = 'kort.png';
+    var w = 8000,
+        h = 5661,
+        url = 'kort18.png';
     // calculate the edges of the image, in coordinate space
+
     var southWest = map.unproject([0, h], map.getMaxZoom()-(maxZoom/2));
     var northEast = map.unproject([w, 0], map.getMaxZoom()-(maxZoom/2));
+
     var bounds = new L.LatLngBounds(southWest, northEast);
     // add the image overlay,
     // so that it covers the entire map
     L.imageOverlay(url, bounds).addTo(map);
     // tell leaflet that the map is exactly as big as the image
     map.setMaxBounds(bounds);
-
+    map.panTo([-50,197]);
 
 
  // ZOOMIFY
