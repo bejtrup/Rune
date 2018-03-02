@@ -27,21 +27,35 @@
   var map;
 
   function initmap() {
+
+    // map = L.map('map',{
+    //         minZoom: 0,
+    //         maxZoom: 5,
+    //         center: [0, 0],
+    //         zoom: 5,
+    //         crs: L.CRS.Simple
+    // }).setView([0, 0]);
+    //
+    // L.tileLayer.wms('kort/kort18_2/TileGroup0/{z}{x}{y}.jpg', {
+    //   attribution: 'Map data &copy; ???',
+    // }).addTo(map);
+
 var maxZoom = 8;
-var minZoom = 2;
+var minZoom = 1;
 
     map = L.map('map', {
+      tap: true,
       minZoom: minZoom,
       maxZoom: maxZoom,
       center: [0, 0],
-      zoom: minZoom,
+      zoom: 2,
       crs: L.CRS.Simple
     });
 
     // dimensions of the image
-    var w = 8000,
-        h = 5661,
-        url = 'kort18.png';
+    var w = 4000,
+        h = 2831,
+        url = 'kort18_2.png';
     // calculate the edges of the image, in coordinate space
 
     var southWest = map.unproject([0, h], map.getMaxZoom()-(maxZoom/2));
@@ -53,7 +67,7 @@ var minZoom = 2;
     L.imageOverlay(url, bounds).addTo(map);
     // tell leaflet that the map is exactly as big as the image
     map.setMaxBounds(bounds);
-    map.panTo([-50,197]);
+    map.panTo([-75.268,98]);
 
 
  // ZOOMIFY
