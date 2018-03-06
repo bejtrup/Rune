@@ -47,6 +47,12 @@ var words = [
   '17a'
 ];
 
+var AutocompleteWords = []
+$.each(words, function(k, v){
+        AutocompleteWords.push(v);
+});
+AutocompleteWords.sort();
+
 function getWordsFromXY(x,y){
   return [ words[x], words[y] ]
 }
