@@ -9,7 +9,7 @@ var OneMeter = (250/347)/10;
 
 function initmap() {
 
-  var maxZoom = 8;
+  var maxZoom = 4;
   var minZoom = 1;
 
   map = L.map('map', {
@@ -30,8 +30,8 @@ function initmap() {
   url = 'kort18_2.png';
   // calculate the edges of the image, in coordinate space
 
-  var southWest = map.unproject([0, h], map.getMaxZoom()-(maxZoom/2));
-  var northEast = map.unproject([w, 0], map.getMaxZoom()-(maxZoom/2));
+  var southWest = map.unproject([0, h], map.getMaxZoom());
+  var northEast = map.unproject([w, 0], map.getMaxZoom());
 
   var bounds = new L.LatLngBounds(southWest, northEast);
   // add the image overlay,
@@ -50,7 +50,7 @@ function initmap() {
 function drawSquare(latLng){
   if(square) square.remove();
   circle = new L.Circle(latLng, OneMeter*5).addTo(map);
-  square = new L.Rectangle( circle.getBounds() ).addTo(map);
+  square = new L.Rectangle( circle.getBounds() , {  fillColor: "#FED44D", fillOpacity: 1, stroke: false }).addTo(map);
   if(circle) circle.remove();
 };
 
