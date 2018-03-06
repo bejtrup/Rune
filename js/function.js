@@ -17,6 +17,74 @@ function find(){
 }
 
 // autocomplete
+$(function(){
+  $("input#wordOne, input#wordTwo").on("click", function(){
+    $(this).select();
+  });
+
+  $("input#wordOne").on("keyup", function(e){
+    var value = $(this).val();
+    $("div#suggestions").html('');
+    // if(e.keyCode == 32 || e.keyCode == 13 ) {
+    //   $("input#wordTwo").focus();
+    // }
+    // else {
+      if(value != '' ){
+        value = makeCap(value);
+        $(this).val( $.trim(value) );
+        $.each(AutocompleteWords, function(k, v){
+          if( v.indexOf(value) == 0 ){
+              fillSuggetionbox(v,$("input#wordTwo").val());
+          }
+        });
+      }
+    //}
+  });
+
+  $("input#wordTwo").on("keyup", function(e){
+    var value = $(this).val();
+    $("div#suggestions").html('');
+    // if(e.keyCode == 32 || e.keyCode == 13 ) {
+    //   $("input#wordTwo").focus();
+    // }
+    // else {
+      if(value != '' ){
+          value = makeCap(value);
+          $(this).val( $.trim(value) );
+          $.each(AutocompleteWords, function(k, v){
+            if( v.indexOf(value) == 0){
+              fillSuggetionbox($("input#wordOne").val(),v);
+            }
+          });
+      }
+    //}
+  });
+
+  $("div#suggestions").on("click", ".one", function(){
+    $("input#wordOne").val( $.trim( $(this).html() ) );
+      $("div#suggestions").html('');
+    $("input#wordTwo").focus();
+  });
+  $("div#suggestions").on("click", ".two", function(){
+      $("input#wordOne").val( $.trim( $(this).find(".wOne").html() ) );
+      $("input#wordTwo").val( $.trim( $(this).find(".wTwo").html() ) );
+      $("div#suggestions").html('')
+      find();
+    });
+});
+function makeCap(str){
+  var str = str.charAt(0).toUpperCase() + str.slice(1);
+  return str;
+}
+function fillSuggetionbox(wordOne,wordTwo) {
+  if(wordOne != '' && wordTwo == ''){
+    $("div#suggestions").prepend("<div class='sugBox one'>"+wordOne+"</div>");
+  }
+  if( wordTwo != ''){
+    $("div#suggestions").prepend("<div class='two'><span class='sugBox wOne'>"+wordOne+"</span> <span class='sugBox wTwo'> "+wordTwo+"</span></div>");
+  }
+}
+
 
 // share
 
@@ -30,3 +98,5 @@ function find(){
 // sw
 
 // apk
+
+// remove jquery
