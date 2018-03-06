@@ -89,6 +89,14 @@ function fillSuggetionbox(wordOne,wordTwo) {
 // share
 
 //  menu
+$(function(){
+  $("div#menubtn").on('click', function(){
+    $("#menu").addClass("out");
+  });
+  $("#close").on('click', function(){
+    $("#menu").removeClass("out");
+  });
+});
 
 // rune Inder
 
