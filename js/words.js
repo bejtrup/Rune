@@ -33,3 +33,12 @@ var words = [
 function getWordsFromXY(x,y){
   return [ words[x], words[y] ]
 }
+
+function getXYfromWord(word) {
+  var word = capitalizeFirstLetter(word);
+  var pos = jQuery.inArray( word, words )
+  return  pos;
+}
+function capitalizeFirstLetter(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+}
