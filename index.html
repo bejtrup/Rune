@@ -22,9 +22,43 @@
   <script src="js/words.js"></script>
   <script src="js/map.js"></script>
   <script src="js/function.js"></script>
+  <script src="js/share.js"></script>
 </head>
 <body>
-  <div id="menubtn" class="menubtn">
+  <h1>Web Share Test</h1>
+  <table>
+    <tr><td>Title:</td>
+        <td><input type="checkbox" id="title_checkbox" checked/></td>
+        <td><input id="title" value="The Title" size="40" /></td>
+    </tr>
+    <tr><td>Text:</td>
+        <td><input type="checkbox" id="text_checkbox" checked/></td>
+        <td><input id="text" value="The message" size="40"/></td>
+    </tr>
+    <tr><td>URL:</td>
+        <td><input type="checkbox" id="url_checkbox" checked/></td>
+        <td><input id="url" value="https://example.com" size="40"/></td>
+    </tr>
+  </table>
+  <p><input id="share" type="button" value="Share" />
+     <input id="share-no-gesture" type="button" value="Share without user gesture" /></p>
+  <div id="output"></div>
+  <p>This is a test page for the <a href="https://github.com/WICG/web-share">Web
+  Share API</a>. It will only work in browsers that have implemented the draft
+  proposal. At the time of writing, this works with:</p>
+  <ul>
+    <li>Google Chrome for Android 61 or higher (older versions can enable
+    chrome://flags#enable-experimental-web-platform-features).</li>
+    <li>Google Chrome for Chrome OS, Windows, or Linux, with
+    chrome://flags#enable-experimental-web-platform-features enabled, in
+    conjunction with a supported
+    <a href="https://github.com/WICG/web-share-target">web share target</a>
+    (<a href="https://wicg.github.io/web-share-target/demos/sharetarget.html">demo app</a>).</li>
+  </ul>
+
+
+
+  <!-- <div id="menubtn" class="menubtn">
     <img src="img/rune_menu.png" width="40" height="40" class="clickEffect">
   </div>
   <div id="menu" class="menu">
@@ -48,8 +82,6 @@
       </div>
       <div class="footer">
         <p>Vi vil selvfølgelig gerne være ligeså fulde som Rune, men vi har klattet vores penge væk på vandballoner og iskager. Så vi vil være meget taknemmelige, hvis du vil give en skærv til en dåseøl.</p>
-        <!--             <a href="mobilepay://send?phone=004551843142&comment=Rune"><img src="img/MobilePay_Logo.png" height="60"></a> -->
-
         <a href="http://mobilepay.dk/js_css/mobilepay2/App-Integration/open.html?phone=004551843142&comment=Rune"><img src="img/MobilePay_Logo.png" class="clickEffect" height="60"></a>
 
         <p>God karma Bjarke og Daniel</p>
@@ -80,6 +112,6 @@
       <div id="find" class="clickEffect" onclick="find();">
         <img src="img/rune_post.png" width="40" height="40">
       </div>
-    </div>
+    </div> -->
   </body>
   </html>
