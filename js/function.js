@@ -98,7 +98,6 @@ $(function(){
   });
 });
 
-// rune Inder
 
 // css
 // zoombtn
