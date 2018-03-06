@@ -1,3 +1,4 @@
+alert("1");
 function fire() {
   var center = map.getCenter();
   drawSquare(getScuareFromCoor(center.lat, center.lng));
