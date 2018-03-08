@@ -110,6 +110,7 @@ $(function(){
   });
 });
 
+//SW get only cash if present
 
 // css
 // zoomtn
