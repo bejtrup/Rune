@@ -46,7 +46,7 @@ var words = [
   '16',
   '17a'
 ];
-
+      //,'Glas','Flaske','Gigolo','Sofa','Pude','Kat','Serviet','Skærm','Stof','Lighter','Filt','Denim','Guld','Sølv','Velour','Dreng','Garn','Mørke','Vand','Dun' DOLK
 var AutocompleteWords = []
 $.each(words, function(k, v){
         AutocompleteWords.push(v);
