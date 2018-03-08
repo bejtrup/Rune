@@ -98,7 +98,7 @@ function fillSuggetionbox(wordOne,wordTwo) {
 }
 
 
-// share
+// share = link - fallback
 
 //  menu
 $(function(){
@@ -112,10 +112,7 @@ $(function(){
 
 
 // css
-// zoombtn
+// zoomtn
 
-// sw
-
-// apk
-
+// Test ios
 // remove jquery
