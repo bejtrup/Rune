@@ -1,7 +1,5 @@
-alert("s");
 $(function(){
   $("#share").click(function(){
-    alert("go")
     if (navigator.share) {
       navigator.share({
         title: 'Web Fundamentals',
@@ -10,6 +8,8 @@ $(function(){
       })
       .then(() => alert('Successful share'))
       .catch((error) => alert('Error sharing', error));
+    } else {
+      alert("næ");
     }
   });
 
