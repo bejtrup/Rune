@@ -1,5 +1,14 @@
-$(function(){
+window.addEventListener("hashchange", function(){
+    var GeturlHash = window.location.hash;
+    GeturlHash = GeturlHash.replace("#","").split("-");
+    if($("input#wordOne").val() != decodeURI(GeturlHash[0]) || $("input#wordTwo").val() != decodeURI(GeturlHash[1]) ){
+      $("input#wordOne").val( decodeURI(GeturlHash[0]) );
+      $("input#wordTwo").val( decodeURI(GeturlHash[1]) );
+      find();
+    }
+}, false);
 
+$(function(){
   var urlHash = window.location.hash;
   urlHash = urlHash.replace("#","").split("-");
   if(urlHash[0] && urlHash[1]){
@@ -22,6 +31,7 @@ function fire() {
 function find(){
   var wordOne = $.trim( $("input#wordOne").val() );
   var WordTwo = $.trim( $("input#wordTwo").val() );
+  window.location.hash = '#'+encodeURI(wordOne)+'-'+encodeURI(WordTwo);
   var x = getXYfromWord(wordOne);
   var y = getXYfromWord(WordTwo);
   var latlng = GetCoorFromXY(x,y);
