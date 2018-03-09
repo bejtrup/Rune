@@ -28,25 +28,25 @@ var words = [
   'Øl',
   'Gul',
   'Lygte',
-  '1',
-  '2',
-  '3',
-  '4',
-  '5',
-  '6',
-  '7',
-  '8',
-  '9',
-  '10',
-  '11',
-  '12',
-  '13',
-  '14',
-  '15',
-  '16',
-  '17a'
+  'Glas',
+  'Flaske',
+  'Gigolo',
+  'Sofa',
+  'Pude',
+  'Kat',
+  'Serviet',
+  'Skærm',
+  'Stof',
+  'Lighter',
+  'Filt',
+  'Denim',
+  'Guld',
+  'Velour',
+  'Dreng',
+  'Garn',
+  'Mørke'
 ];
-      //,'Glas','Flaske','Gigolo','Sofa','Pude','Kat','Serviet','Skærm','Stof','Lighter','Filt','Denim','Guld','Sølv','Velour','Dreng','Garn','Mørke','Vand','Dun' DOLK
+      //','','Sølv','','','','','Vand','Dun' DOLK
 var AutocompleteWords = []
 $.each(words, function(k, v){
         AutocompleteWords.push(v);

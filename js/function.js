@@ -3,8 +3,8 @@ $(function(){
   var urlHash = window.location.hash;
   urlHash = urlHash.replace("#","").split("-");
   if(urlHash[0] && urlHash[1]){
-    $("input#wordOne").val(urlHash[0]);
-    $("input#wordTwo").val(urlHash[1]);
+    $("input#wordOne").val( decodeURI(urlHash[0]) );
+    $("input#wordTwo").val( decodeURI(urlHash[1]) );
     find();
   }
 });
@@ -16,6 +16,8 @@ function fire() {
   var words = getWordsFromXY(xy[0], -xy[1]);
   $("input#wordOne").val(words[0]);
   $("input#wordTwo").val(words[1]);
+
+  window.location.hash = '#'+encodeURI(words[0])+'-'+encodeURI(words[1]);
 }
 function find(){
   var wordOne = $.trim( $("input#wordOne").val() );
