@@ -8,7 +8,7 @@
     "short_name" : "Rune",
     "theme_color" : "#FFDC6D",
     "description" : "Find dine venner, på Roskilde festival, uden brug af for meget strøm",
-    "orientation" : "any",
+    "orientation" : "portrait",
     "background_color" : "#E65199",
     "icons": [{
       "src": "icons/icon-48-mdpi.png",
