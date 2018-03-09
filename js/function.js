@@ -1,13 +1,12 @@
 $(function(){
-// fullscreen
-// var el = document.documentElement,
-//   rfs = el.requestFullscreen
-//     || el.webkitRequestFullScreen
-//     || el.mozRequestFullScreen
-//     || el.msRequestFullscreen
-// ;
-//
-// rfs.call(el);
+
+  var urlHash = window.location.hash;
+  urlHash = urlHash.replace("#","").split("-");
+  if(urlHash[0] && urlHash[1]){
+    $("input#wordOne").val(urlHash[0]);
+    $("input#wordTwo").val(urlHash[1]);
+    find();
+  }
 });
 
 function fire() {
