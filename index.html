@@ -89,9 +89,24 @@
       navigator.serviceWorker.register('pwabuilder-sw.js', {
         scope: './'
       }).then(function(reg) {
+        track();
         console.log('Service worker has been registered for scope:'+ reg.scope);
       });
     }
+    function track(){
+      var productSub = navigator.productSub;
+      var date = new Date()
+      var graphQLEndpoint = 'https://api.graph.cool/simple/v1/cjel99zw52h8l0111pencgcax';
+      var q = 'mutation { createTrack( date: "'+date+'" productSub: '+productSub+' ){ id }}';
+
+      $.post({
+        url: graphQLEndpoint,
+        data: JSON.stringify({ "query": q }),
+        contentType: 'application/json'
+      }).done(function(response) {
+      });
+    }
+
   </script>
 </body>
 </html>
