@@ -21,9 +21,7 @@ function initmap() {
     zoom: 2,
     crs: L.CRS.Simple
   });
-  L.control.zoom({
-    position:'bottomright'
-  }).addTo(map);
+
   // dimensions of the image
   var w = 4000,
   h = 2834, //2831
