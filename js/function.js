@@ -4,7 +4,7 @@ window.addEventListener("hashchange", function(){
     if($("input#wordOne").val() != decodeURI(GeturlHash[0]) || $("input#wordTwo").val() != decodeURI(GeturlHash[1]) ){
       $("input#wordOne").val( decodeURI(GeturlHash[0]) );
       $("input#wordTwo").val( decodeURI(GeturlHash[1]) );
-      alert(GeturlHash[0])+ " :: " + GeturlHash[1]));
+      alert( "hash has canged: "+ GeturlHash[0] + " :: " + GeturlHash[1] );
       find();
     }
 }, false);
