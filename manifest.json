@@ -6,7 +6,7 @@
     "display" : "standalone",
     "start_url" : "https://runeapp.dk/",
     "short_name" : "Rune",
-    "theme_color" : "#FFDC6D",
+    "theme_color" : "#E65199",
     "description" : "Find dine venner, på Roskilde festival, uden brug af for meget strøm",
     "orientation" : "portrait",
     "background_color" : "#E65199",
