@@ -97,7 +97,7 @@
       var productSub = navigator.productSub;
       var date = new Date()
       var graphQLEndpoint = 'https://api.graph.cool/simple/v1/cjel99zw52h8l0111pencgcax';
-      var q = 'mutation { createTrack( date: "'+date+'" productSub: '+productSub+' ){ id }}';
+      var q = 'mutation { createTrack( date: "'+date+'" app:"rune" productSub: '+productSub+' ){ id }}';
 
       $.post({
         url: graphQLEndpoint,
