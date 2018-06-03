@@ -1,13 +1,14 @@
 window.addEventListener("hashchange", function(){
     var GeturlHash = window.location.hash;
     GeturlHash = GeturlHash.replace("#","").split("-");
-    if($("input#wordOne").val() != decodeURI(GeturlHash[0]) || $("input#wordTwo").val() != decodeURI(GeturlHash[1]) ){
-      $("input#wordOne").val( decodeURI(GeturlHash[0]) );
-      $("input#wordTwo").val( decodeURI(GeturlHash[1]) );
-      find();
+    if( GeturlHash[0] && GeturlHash[0]){
+      if($("input#wordOne").val() != decodeURI(GeturlHash[0]) || $("input#wordTwo").val() != decodeURI(GeturlHash[1]) ){
+        $("input#wordOne").val( decodeURI(GeturlHash[0]) );
+        $("input#wordTwo").val( decodeURI(GeturlHash[1]) );
+        find();
+      }
     }
 }, false);
-
 $(function(){
   var urlHash = window.location.hash;
   urlHash = urlHash.replace("#","").split("-");
@@ -23,10 +24,16 @@ function fire() {
   drawSquare(getScuareFromCoor(center.lat, center.lng));
   var xy = getScuareXYFromCoor(center.lat, center.lng)
   var words = getWordsFromXY(xy[0], -xy[1]);
-  $("input#wordOne").val(words[0]);
-  $("input#wordTwo").val(words[1]);
 
-  window.location.hash = '#'+encodeURI(words[0])+'-'+encodeURI(words[1]);
+  if(words[0] && words[1]){
+    $("input#wordOne").val(words[0]);
+    $("input#wordTwo").val(words[1]);
+
+    window.location.hash = '#'+encodeURI(words[0])+'-'+encodeURI(words[1]);
+  } else{
+    $("input#wordOne").val('');
+    $("input#wordTwo").val('');
+  }
 }
 function find(){
   var wordOne = $.trim( $("input#wordOne").val() );
