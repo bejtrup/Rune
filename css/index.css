@@ -297,7 +297,3 @@ input {
     transition: all .1s ease-in-out;
   }
   .clickEffect:active { transform: scale(0.9); }
-
-  .hide-on-no-css{
-    display: none;
-  }
