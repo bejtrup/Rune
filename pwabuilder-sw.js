@@ -21,6 +21,7 @@ var precacheFiles = [
       "js/map.js",
       "js/share.js",
       "js/words.js",
+      "https://unpkg.com/leaflet@1.3.1/dist/leaflet.css",
       "https://unpkg.com/leaflet@1.3.1/dist/leaflet.js",
       "https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"
     ];
