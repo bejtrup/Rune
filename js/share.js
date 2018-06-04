@@ -17,11 +17,10 @@ $(function(){
         .catch((error) => console.log('Error sharing', error));
       } else {
             var domainName = document.location.origin;
-            prompt('Kopier det her og send det du.', text + " " + url);
+            prompt('Kopier det her og send det!', text + " " + url);
       }
     } else {
       alert("to ord du!");
     }
   });
-
 });
