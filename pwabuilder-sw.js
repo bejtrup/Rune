@@ -1,9 +1,29 @@
 //This is the service worker with the Cache-first network
-var Version = 1;
+var Version = 4;
 
 var CACHE = 'RUNE-precache';
 var precacheFiles = [
-      "kort18_2.png"
+      "kort18_2.png",
+      "index.html",
+      "./",
+      "css/index.css",
+      "css/HVD_Poster_Clean.ttf",
+      "img/MobilePay_Logo.png",
+      "img/rune_arm.png",
+      "img/rune_close.png",
+      "img/rune_get.png",
+      "img/rune_info.png",
+      "img/rune_menu.png",
+      "img/rune_post.png",
+      "img/rune_screen.png",
+      "img/rune_share.png",
+      "js/function.js",
+      "js/map.js",
+      "js/share.js",
+      "js/words.js",
+      "https://unpkg.com/leaflet@1.3.1/dist/leaflet.css",
+      "https://unpkg.com/leaflet@1.3.1/dist/leaflet.js",
+      "https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"
     ];
 
 //Install stage sets up the cache-array to configure pre-cache content
