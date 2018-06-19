@@ -25,7 +25,7 @@ function initmap() {
   // dimensions of the image
   var w = 4000,
   h = 2834, //2831
-  url = 'kort18_2.png';
+  url = 'kort18_4.png';
   // calculate the edges of the image, in coordinate space
 
   var southWest = map.unproject([0, h], map.getMaxZoom());
